@@ -6,8 +6,8 @@ COPY go.mod ./
 COPY *.go ./
 COPY static ./static
 
-RUN go build -o /belajar-cicd-pemula
+RUN go build -o /learnCI-CD
 
 EXPOSE 3000
 
-CMD ["/belajar-cicd-pemula"]
+CMD ["/learnCI-CD"]
