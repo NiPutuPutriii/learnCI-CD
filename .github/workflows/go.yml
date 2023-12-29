@@ -39,3 +39,27 @@ jobs:
         with:
           push: true
           tags: niputuputri/learnci-cd:latest
+
+#       cd /home/siput/learnCI-CD
+
+# USERNAME: siput
+# PASSWORD: xxxxxxxx
+# HOST: 0.tcp.ap.ngrok.io
+# PORT: 14728
+
+# ssh userDebbian@host -p port
+# ssh siput@0.tcp.ap.ngrok.io -p 14728
+      
+      - name: SSH Login and Deployment
+        uses: appleboy/ssh-action@v1.0.1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/siput/learnCI-CD
+            git pull origin main
+            docker compose -f docker-compose.yml down
+            docker pull niputuputri/learnci-cd
+
